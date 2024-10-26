@@ -52,6 +52,7 @@ private:
 	TextServer::AutowrapMode autowrap_mode = TextServer::AUTOWRAP_OFF;
 	BitField<TextServer::JustificationFlag> jst_flags = TextServer::JUSTIFICATION_WORD_BOUND | TextServer::JUSTIFICATION_KASHIDA | TextServer::JUSTIFICATION_SKIP_LAST_LINE | TextServer::JUSTIFICATION_DO_NOT_SKIP_SINGLE_LINE;
 	bool clip = false;
+	bool best_fit = false;
 	String el_char = U"…";
 	TextServer::OverrunBehavior overrun_behavior = TextServer::OVERRUN_NO_TRIMMING;
 	Size2 minsize;
@@ -151,6 +152,9 @@ public:
 
 	void set_clip_text(bool p_clip);
 	bool is_clipping_text() const;
+
+	void set_best_fit(bool p_best_fit);
+	bool is_best_fiting() const;
 
 	void set_tab_stops(const PackedFloat32Array &p_tab_stops);
 	PackedFloat32Array get_tab_stops() const;

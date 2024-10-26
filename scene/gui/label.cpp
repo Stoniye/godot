@@ -964,6 +964,18 @@ bool Label::is_clipping_text() const {
 	return clip;
 }
 
+void Label::set_best_fit(bool p_best_fit) {
+	if (best_fit == p_best_fit) {
+		return;
+	}
+
+	best_fit = p_best_fit;
+}
+
+bool Label::is_best_fiting() const {
+	return best_fit;
+}
+
 void Label::set_tab_stops(const PackedFloat32Array &p_tab_stops) {
 	if (tab_stops != p_tab_stops) {
 		tab_stops = p_tab_stops;
@@ -1130,6 +1142,8 @@ void Label::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_justification_flags"), &Label::get_justification_flags);
 	ClassDB::bind_method(D_METHOD("set_clip_text", "enable"), &Label::set_clip_text);
 	ClassDB::bind_method(D_METHOD("is_clipping_text"), &Label::is_clipping_text);
+	ClassDB::bind_method(D_METHOD("set_best_fit", "enable"), &Label::set_best_fit);
+	ClassDB::bind_method(D_METHOD("is_best_fiting"), &Label::is_best_fiting);
 	ClassDB::bind_method(D_METHOD("set_tab_stops", "tab_stops"), &Label::set_tab_stops);
 	ClassDB::bind_method(D_METHOD("get_tab_stops"), &Label::get_tab_stops);
 	ClassDB::bind_method(D_METHOD("set_text_overrun_behavior", "overrun_behavior"), &Label::set_text_overrun_behavior);
@@ -1167,6 +1181,7 @@ void Label::_bind_methods() {
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "justification_flags", PROPERTY_HINT_FLAGS, "Kashida Justification:1,Word Justification:2,Justify Only After Last Tab:8,Skip Last Line:32,Skip Last Line With Visible Characters:64,Do Not Skip Single Line:128"), "set_justification_flags", "get_justification_flags");
 
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "clip_text"), "set_clip_text", "is_clipping_text");
+	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "best_fit"), "set_best_fit", "is_best_fiting");
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "text_overrun_behavior", PROPERTY_HINT_ENUM, "Trim Nothing,Trim Characters,Trim Words,Ellipsis,Word Ellipsis"), "set_text_overrun_behavior", "get_text_overrun_behavior");
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "ellipsis_char"), "set_ellipsis_char", "get_ellipsis_char");
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "uppercase"), "set_uppercase", "is_uppercase");
