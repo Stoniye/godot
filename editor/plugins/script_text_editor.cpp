@@ -40,6 +40,7 @@
 #include "editor/editor_string_names.h"
 #include "editor/gui/editor_toaster.h"
 #include "editor/themes/editor_scale.h"
+#include "scene/gui/menu_button.h"
 #include "scene/gui/rich_text_label.h"
 #include "scene/gui/split_container.h"
 
@@ -1635,7 +1636,7 @@ void ScriptTextEditor::_edit_option_toggle_inline_comment() {
 	script->get_language()->get_comment_delimiters(&comment_delimiters);
 
 	for (const String &script_delimiter : comment_delimiters) {
-		if (!script_delimiter.contains(" ")) {
+		if (!script_delimiter.contains_char(' ')) {
 			delimiter = script_delimiter;
 			break;
 		}
